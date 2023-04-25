@@ -1,0 +1,7 @@
+FROM ubuntu:20.04
+
+WORKDIR /evans
+
+RUN apt-get update -y && apt-get install wget -y && \
+wget https://github.com/ktr0731/evans/releases/download/v0.10.11/evans_linux_arm.tar.gz && \
+tar -xzvf evans_linux_arm.tar.gz

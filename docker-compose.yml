@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  app_go:
+    container_name: app_go
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["tail", "-f", "/dev/null"]
+    volumes:
+      - ./src/:/usr/src/app
+    networks:
+      - go_network
+    ports:
+      - 50051:50051
+  evans:
+    container_name: evans
+    build:
+      context: .
+      dockerfile: Dockerfile-Evans
+    command: ["tail", "-f", "/dev/null"]
+    networks:
+      - go_network
+networks:
+  go_network:
+    driver: bridge
